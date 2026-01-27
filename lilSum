@@ -36,6 +36,7 @@ RunService.RenderStepped:Connect(function()
                 if target:IsA("Model") and target ~= lplr.Character then
                     local head = target:FindFirstChild(settings.TargetPart)
                     local hum = target:FindFirstChildOfClass("Humanoid")
+                    if head and head:FindFirstChild("Teammate") then continue end
                     if head and hum and hum.Health > 0 and head.Position.Y < settings.MaxHeight then
                         local screenPos, onScreen = camera:WorldToViewportPoint(head.Position)
                         if onScreen then
